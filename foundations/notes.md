@@ -36,4 +36,262 @@ You are highly encouraged to download and use the exercise files to follow along
 - The end folder will contain the completed notebook just for your reference
 - There is only one dataset for the entire course, and it is in the root directory
 
+## Machine Learning Basics
 
+### [What is Machine Learning?](https://www.linkedin.com/learning/applied-machine-learning-foundations/what-is-machine-learning?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+If you ask 10 data scientists to define machine learning, you might get 10 different answers. But they will revolve around some key themes.
+
+> "Field of study that gives computers the ability to learn without being explicitly programmed." 
+> 
+> --- Arthur Samuel, IBM, 1959
+
+- Arthur Samuel is recognized as one of the first real machine learning pioneers
+- He was actually the first to coin the term machine learning
+- His definition is a bit vague and seems a bit magical, so let's look at another one...
+
+> "Machine learning algorithms can figure out how to perform important tasks by generalizing from examples."
+> 
+> --- Pedro Domingos, University of Washington
+
+- This definition hits on one key concept that is missing from the previous definition:
+  - "generalizing from examples"
+
+> "Machine learning is fitting a function to examples and using that function to generalize and make predictions about new examples"
+> 
+> --- Derek Jedamski, Instructor of this Course
+
+- This hits on the fact the algorithm, machine learning model, is based on the data that you feed it that's learning from examples and that the entire goal is to use that learned model to make predictions about new examples
+- In other words, machine learning models learn from trends in past data to make predictions about future data
+
+### [What Kind of Problems can this Help you Solve?](https://www.linkedin.com/learning/applied-machine-learning-foundations/what-kind-of-problems-can-this-help-you-solve?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+There are two high-level questions that first need to be asked in order to determine if the problem can be solved with ML:
+- Is this a type of problem that can be solved using ML?
+  - Does it require a prediction or bucketing something into categories?
+    - If neither one of these apply then this is not a problem that can be solved with ML
+  - Is the problem relatively self-contained?
+    - It there are too many additional or outside factors, there will be too much noise to actually make an accurate prediction
+
+- Is this particular problem one that can be solved with ML?
+  - Do I have data with labels?
+    - If you don't have labels for your examples, the model can't learn from the past data
+  - 
+    - Even if you have labels, it can still be relatively complex to determine the accuracy of the model
+  - Can I determine an acceptable accuracy threshold?
+    - You should be able to tie the model performance to the cost or savings of some sort
+    - In other words, do I understand the business impact of this model?
+      - What is the break even point?
+      - What would even be considered a success?
+
+Break down the questions into a flowchart:
+1. Does it require a prediction or bucketing something into categories?
+   ![](project_proposal_q1.jpg)
+
+2. Is the problem relatively self-contained?
+   ![](project_proposal_q2.jpg)
+
+3. Do I have data with labels?
+   ![](project_proposal_q3.jpg)
+
+4. Do I have the ability to assess the quality of the model?
+   ![](project_proposal_q4.jpg)
+
+5. Can I determine an acceptable accuracy threshold?
+   ![](project_proposal_final.jpg)
+
+### [Why Python](https://www.linkedin.com/learning/applied-machine-learning-foundations/why-python?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+- Very popular right now and has a large user base
+- With a large user base, means nice documentation, lots of quality tutorials, and a lot of activity on Stack Overflow
+- Has more machine learning packages than any other language
+- Fairly easy to learn and it's remarkably easy to work with, especially in those machine learning packages
+- The barrier to entry is quite low
+- Python is like a Swiss Army Knife when it comes to data
+  - Has very easy to use packages for pretty much anything you'd like to do
+  - Classic machine learning: `scikit-learn`, `LightGBM`, `SciPy`
+  - Deep learning: `TensorFlow`, `PyTorch`, `keras`
+  - Natural Language Processing (NLP): `NLTK`, `genism`
+  - Image recognition: `OpenCV`, `scikit-learn`
+  - Data visualization: `Matplotlilb`, `Seaborn`
+  - Data analysis: `pandas`, `NumPy`
+
+### [Machine Learning vs Deep Learning vs Artificial Intelligence](https://www.linkedin.com/learning/applied-machine-learning-foundations/machine-learning-vs-deep-learning-vs-artificial-intelligence?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+![](disambiguating_terms.jpg)
+
+**Machine Learning:**
+![](ml_definition.jpg)
+- AKA: Pattern Matching
+
+**Deep Learning:**
+![](dl_definition.jpg)
+- AKA: Connected pattern matching
+- It is still fitting a function to examples, but the difference comes in the fact that these functions are then organized as connected layer of nodes
+- In other words, you will have many function connected together in one network where each function is responsible for a very specific thing
+- This is still all with the goal to generalize and make predictions about new examples using our network of functions
+
+**Artificial Intelligence:**
+![](ai_definition.jpg)
+- A superset of machine learning and deep learning
+- There are two types of AI:
+  - **Weak AI:** Intelligence specifically designed to focus on a narrow task
+    - Basically machine learning
+    - Example: identifying fraudulent credit card charges
+
+  - **Strong / General AI:** A machine with consciousness, sentience, and a mind; general intelligence capable of any and all cognitive functions and reasoning that a human is capable of
+    - A superset of many things
+    - Only one of those things happens to be machine learning
+    - There are many things under the umbrella of AI that is not machine learning
+
+### [Demos of ML in Real Life](https://www.linkedin.com/learning/applied-machine-learning-foundations/demos-of-machine-learning-in-real-life?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+- Personal assistants: Siri, Google Home, Amazon Echo
+  - All the speech recognition software for these devices is built using machine learning
+    ![](siri_teardown.jpg)
+
+- Recommendation systems: Amazon, Netflix, Facebook, Twitter
+  - All of these systems are driven by machine learning
+  - One example is using ***collaborative filtering***
+    ![](collaborative_filtering.jpg)
+    - **Collaborative Filtering:** Uses similarities between users to make recommendations
+    - In the example above:
+      - Both Tom and Bob have bought and enjoyed pizza and salad
+      - Based on their purchase and rating history, we know that they have similar taste
+      - Bob has also bought and enjoyed a soda but Tom has not
+      - So the system should recommend soda to Tom
+
+- Ride-sharing: Uber, Lyft
+  - There are a number of ways in which machine learning can be used
+    - Route efficiency based on traffic
+    - Driver-ride pairings based on the following to determining efficient ways to pair two riders together for UberPool:
+      - Rider location
+      - Driver location
+      - Traffic
+    - Optimal pricing based on demand of users and supply of drivers to keep the appropriate balance
+  - Uber has made all their traffic data publicly available and has built this really neat tool called "Uber Movement"
+    ![](uber_movement.jpg)
+    - It shows how long it would take to get to different areas of a number of different cities given the time of day, day of week, and things like that
+    - The colors correspond to travel times and you can click around to see how long it takes to get to different areas
+
+- Self-driving Cars:
+  ![](self-driving.jpg) 
+  - This is using deep learning, which is just a sub-set of machine learning
+
+### [Common Challenges](https://www.linkedin.com/learning/applied-machine-learning-foundations/common-challenges?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Common challenges tend to fall into four high-level categories:
+
+- **Problem Scoping**
+  - The right problem is not being solved
+    - Being able to translate an actual business problem into data and then into a model that will actually solve that exact problem isn't always as easy as it would seem
+  - Tolerance threshold is undetermined
+    - If you don't understand the impact on the business, then you can't translate it into one acceptable level of accuracy as for the model
+    - This is critical to understand before you can even consider deploying a model
+  - Impact in real environment can't be measured
+    - Often times it is a huge challenge to properly gauge the impact the model will have once it actually goes live in a production system
+
+- **Data**
+  - Lack of data / data sensitivity
+    - Even in the world of big data, it is actually a very common problem to not have enough data
+    - You need enough data to pick up on the underlying pattern in the data
+  - Too much data
+    - Data is big when managing the data becomes part of the actual problem
+  - Data doesn't have labels
+    - If you don't have labels, the model simply can't learn the pattern that you want it to learn
+    - Sometimes this requires hand labeling, or sometimes you can determine some proxy for the label in an automated way
+  - Data is too biased, dirty, noisy, incomplete, etc.
+    - You will have to spend a large chunk of your time cleaning your data
+    - This is a very common problem
+
+- **Infrastructure**
+  - Lack skills to robustly automate
+    - Often when models are used in business, they are plugged into an environment where they're run in real time
+    - It is quite uncommon to have someone that has the skill to build a quality machine learning model while also having the skills to build out the system to run the model in real time
+    - Not enough compute power
+      - This is especially a problem in the world of big data
+      - When you have TBs of data to process, you need a lot of compute power, and you have to be very careful about how you write your code to make sure it's efficient
+    - Inability to A/B test with existing solution
+      - You ideal want to test your model in the live environment against whatever mechanism is currently governing the process that this will plug into
+    - Inability to continuously track model quality
+      - Once the A/B testing stage has passed that you will want to track the model performance over time to make sure that you're not seeing model degradation
+      - A lot of places do not have anything in place for this type of tracking
+
+- **Latency**
+  - Model takes too long to train
+    - This can relate back to having too much data or not having enough compute power for the data you have
+    - If a model takes days to train, that can be really difficult to iterate and improve
+    - You need to plan your time very carefully when this challenge comes into play
+  - Model takes too long at inference time
+    - **Inference Time:** When the model's deployed and needs to make real-time decisions
+
+### [Chapter Quiz](https://www.linkedin.com/learning/applied-machine-learning-foundations/quiz/urn:li:learningApiAssessment:4586348?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+What is one of the key purposes of machine learning?
+
+- [ ] clean up messy data
+
+- [ ] memorize training examples
+
+- [x] generalize to unseen examples
+
+Which is NOT a reason why we use Python for machine learning?
+
+- [ ] It's popular and has a large user base.
+
+- [x] It's the fastest language available.
+
+- [ ] It offers more machine learning packages than any other language.
+
+- [ ] It's easy to learn and work with.
+
+Which is NOT accurate?
+
+- [x] Strong AI is the equivalent of machine learning.
+
+- [ ] Deep learning is a subset of artificial intelligence.
+
+- [ ] Deep learning is a subset of machine learning.
+
+- [ ] Weak AI is the equivalent of machine learning.
+
+## Exploratory Data Analysis and Data Cleaning
+
+### [Why do we Need to Explore and Clean our Data?](https://www.linkedin.com/learning/applied-machine-learning-foundations/why-do-we-need-to-explore-and-clean-our-data?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+**Why EDA (Exploratory Data Analysis)?**
+- Understand the shape of the data
+- Learn which features might be useful
+- Inform the cleaning that will come next
+- Imagine this stage as building the foundation for the house that you are going to build on top of it
+- Without a firm handle on what this data looks like, your foundation is going to be shaky
+- The house (model) built on top of it will likely end up suboptimal
+
+**What do we do during EDA?**
+- There are so many different paths to go down depending on your data
+- Counts or distributions of all variables to understand the shape
+- Look at the data type for each feature
+- Check for missing data
+- Understand correlations between your features
+- Identify duplicates in the data
+- You usually head into EDA with a few key questions that you want to answer but you often allow the data to take you where you need to go within some constraints
+- It is important to have structure but be flexible enough to dig into areas that you hadn't planned on looking at before you actually got your hands on the data
+
+**Why Data Cleaning?**
+- ML models are not magic
+- ML models are algorithms that respond in a systematic way to the data that you give it
+- If you give it biased data, you'll get a biased model
+- If you give it incomplete data, it will return weak predictions
+- It prepares the data in the best way possible to allow the model to pick up on underlying patterns that we want it to fit to
+- Shape the data in a way a model can best pick up on the signal
+- Remove irrelevant data
+- Adjust features to be acceptable for a model
+
+**What do we do during Data Cleaning?**
+- Anonymize your data
+  - There are heavy regulations on data privacy, so generally you should be removing any personal identifiers from your data it this isn't publicly-available data
+- Encode categorical variables
+- Fill in missing data (if necessary)
+- Prune / scale data to account for skewed data / outliers
+
+### [Exploring Continuous Features](https://www.linkedin.com/learning/applied-machine-learning-foundations/exploring-continuous-features?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
