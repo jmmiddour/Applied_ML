@@ -373,9 +373,119 @@ Which is NOT a required argument for the where method from numpy?
 
 ## Measuring Success
 
+### [Why do we Split up our Data?](https://www.linkedin.com/learning/applied-machine-learning-foundations/why-do-we-split-up-our-data?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
 
+- We need to have examples to test our model with; to verify iot is generalizing properly to data it had never seen before
+- We want to split our data into three separate sets:
+  - **Training:** Data used to train the model (allow the algorithm to learn from this data)
+    - We will fit a number of different models on this data with different hyperparameters
+  - **Validation:** Data used to select the best model (optimal algorithm and hyperparameter settings)
+    - Represents the first attempt to understand how the model will generalize to new examples
+    - We do not want the models to learn in any way from this set
+    - These need to be completely unseen examples
+  - **Test:** Data used to provide an unbiased evaluation of what the model will look like in its real environment
+    - The only difference between the validation and testing sets is that you'll use performance on the validation set to select the best model 
+    - This set is just one more check to make sure that the model's performance does not deviate too far from what you saw in the validation set
 
+- The split ratio can vary based on the use case, but general you would split the data as so:
+  - 60% Training
+  - 20% Validation
+  - 20% Testing
 
+![](training_with_sets.jpg)
+Basic workflow of training, validating, and testing your model
 
+What are the risks of not splitting up the full dataset?
+- Overfitting or underfitting to the data
+- Which can lead to an inaccurate representation of how the model will generalize
+
+### [Split Data for Train/Validation/Test Set](https://www.linkedin.com/learning/applied-machine-learning-foundations/split-data-for-train-validation-test-set?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Work for this section done in the notebook in the [exercise section](foundations/03_Evaluation/03_02/Start/03_02.ipynb)
+
+### [What is Cross-Validation?](https://www.linkedin.com/learning/applied-machine-learning-foundations/what-is-cross-validation?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+- **Holdout Test Set:** 
+  - A generalization of the test set that we've been talking about
+  - Any data set that was not used in fitting a model
+  - Sample of data not used in fitting a model; used to evaluate the model's ability to generalize to unseen data
+
+- **K-Fold Cross-Validation:**
+  - Data is divided into `k` subsets and the holdout method is repeated `k` times
+  - Each time, one of the `k` subsets is used as the test set and the other `k`- 1 subsets are combined to be used to train the model
+  - This is another tool that is really helpful to gauge a model's ability to generalize to unseen examples
+
+  ![](k-folds_cv_example.jpg)
+  - In this example `k = 5`
+  - We have `5` subsets of data and each has `2,000` examples
+  - There is no duplication in any of the subsets, all values are accounted for
+  - All subsets will maintain the same data through the whole process
+  - What happens during each iteration?
+    - One of the subsets gets assigned as the test set, depending on what iteratation we are currently on
+    - A new model is fit on the `4` current training sets
+    - The model is then evaluated with the test set
+    - The performance metric is recorded for that iteration
+  - After the final iteration, you can output the full array of stored scores or just an average of all the scores
+
+### [Establishing an Evaluation Framework](https://www.linkedin.com/learning/applied-machine-learning-foundations/establish-an-evaluation-framework?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+**Two Components of Evaluation Framework**
+1. **Evaluation Metrics:**
+   - How are we gauging the accuracy of the model?
+   - What is the quantitative measure of performance that we're going to use?
+   - For our Titanic dataset:
+     - This is what is called a classification problem
+     - We are just making a binary prediction
+     - We will use the following three metrics:
+       - Accuracy = # predicted correctly / total # of examples
+       - Precision = # predicted as surviving that survived / total # predicted to survive
+         - What percentage of the model's predictions were correct based on total number of all survived predictions
+       - Recall = # predicted as surviving that survived / total # that survived
+         - What percentage of the model's predictions were correct based on the true number of true survivors
+       ![](precision_recall.jpg)
+
+2. **Process (How to Split the Data):**
+   - How do we leverage our full dataset to mitigate the likelihood of overfitting or underfitting?
+   - Both of which will affect the model's ability to generalize
+
+    ![](full_dataset_to_5_fold_cv.jpg)
+
+   1. Run fivefold cross-validation and select the best models
+   2. Re-fit models with the chosen hyperparameter settings on full training set, evaluate those models on the validation set and pick the best one
+   3. Evaluate that best model on the test set to gauge its ability to generalize to unseen data
+
+### [Chapter Quiz](https://www.linkedin.com/learning/applied-machine-learning-foundations/quiz/urn:li:learningApiAssessment:4584875?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Model performance on the training set matters more than performance on the validation set or test set.
+
+- [ ] TRUE
+
+- [x] FALSE
+
+Scikit-learn's train_test_split method is capable of splitting a single dataset into three data subsets.
+
+- [ ] TRUE
+
+- [x] FALSE
+
+How many individual models will be built in standard 10-fold Cross-Validation?
+
+- [ ] 3
+
+- [x] 10
+
+- [ ] 5
+
+- [ ] 1
+
+Which is NOT a commonly used performance metric for classification problems?
+
+- [ ] accuracy
+
+- [ ] precision
+
+- [ ] recall
+
+- [x] cross-validation
 
 
