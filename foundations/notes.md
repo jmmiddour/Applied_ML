@@ -295,3 +295,87 @@ Which is NOT accurate?
 - Prune / scale data to account for skewed data / outliers
 
 ### [Exploring Continuous Features](https://www.linkedin.com/learning/applied-machine-learning-foundations/exploring-continuous-features?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Work for this section done in the notebook in the [exercise section](foundations/02_EDA/02_03/Start/02_02%20-%2002_03.ipynb)
+
+### [Plotting Continuous Features](https://www.linkedin.com/learning/applied-machine-learning-foundations/plotting-continuous-features?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Work for this section done in the notebook in the [exercise section](foundations/02_EDA/02_03/Start/02_02%20-%2002_03.ipynb)
+
+### [Continuous Data Cleaning](https://www.linkedin.com/learning/applied-machine-learning-foundations/continuous-data-cleaning?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Work for this section done in the notebook in the [exercise section](foundations/02_EDA/02_04/Start/02_04.ipynb)
+
+### [Exploring Categorical Features](https://www.linkedin.com/learning/applied-machine-learning-foundations/exploring-categorical-features?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Work for this section done in the notebook in the [exercise section](foundations/02_EDA/02_06/Start/02_05%20-%2002_06.ipynb)
+
+### [Plotting Categorical Features](https://www.linkedin.com/learning/applied-machine-learning-foundations/plotting-categorical-features?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Work for this section done in the notebook in the [exercise section](foundations/02_EDA/02_06/Start/02_05%20-%2002_06.ipynb)
+
+
+### [Categorical Data Cleaning](https://www.linkedin.com/learning/applied-machine-learning-foundations/categorical-data-cleaning?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Work for this section done in the notebook in the [exercise section](foundations/02_EDA/02_07/Start/02_07.ipynb)
+
+### [Chapter Quiz](https://www.linkedin.com/learning/applied-machine-learning-foundations/quiz/urn:li:learningApiAssessment:4584876?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Exploratory data analysis is performed only to inform data cleaning.
+
+- [ ] TRUE
+
+- [x] FALSE
+
+Which is NOT a reason why we had to determine whether Age was missing at random?
+
+- [ ] It impacts how we treat the missing values.
+
+- [x] The model will treat it different if it's missing at random.
+
+- [ ] It helps us understand feature relationships in our data.
+
+Looking at mean values overstates the impact of Fare on whether somebody survived or not.
+
+- [x] TRUE
+
+- [ ] FALSE
+
+If we do NOT include "inplace=True" in our drop statement, then we need to assign the alteration to a new dataframe.
+
+- [x] TRUE
+
+- [ ] FALSE
+
+How could we tell Cabin was NOT missing at random?
+
+- [x] splitting power on survival rate
+
+- [ ] how many missing values there are
+
+- [ ] correlation with other input features
+
+Embarkation is a causal factor in determining whether somebody survived.
+
+- [ ] TRUE
+
+- [x] FALSE
+
+Which is NOT a required argument for the where method from numpy? 
+
+- [ ] Value assigned if true
+
+- [ ] Condition
+
+- [ ] Value assigned if false
+
+- [x] inplace=True (or False)
+
+## Measuring Success
+
+
+
+
+
+
+
