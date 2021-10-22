@@ -488,4 +488,205 @@ Which is NOT a commonly used performance metric for classification problems?
 
 - [x] cross-validation
 
+## Optimizing a Model
+
+### [Bias / Variance Tradeoff](https://www.linkedin.com/learning/applied-machine-learning-foundations/bias-variance-tradeoff?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+![](bias_variance_dartboards.jpg)
+
+**Low Bias / Low Variance (Top Left):**
+- Centered around the bullseye and constantly hitting the bullseye
+
+**Low Bias / High Variance (Top Right):**
+- You are centered around the bullseye but you are not constantly actually hitting the bullseye
+- Low Bias: You are centered around the target
+- High Variance: you are spread out and not constantly hitting whatever you're aiming for
+
+**High Bias / Low Variance (Bottom Left):**
+- You're not centered around the bullseye but the darts are fairly concentrated
+
+**High Bias / High Variance (Bottom Right):**
+- You are not centered around the bullseye and you are spread out
+
+**Bias:** The algorithm's tendency to consistently learn the wrong thing by not taking into account all the information in the data.
+
+**High Bias:** A result of the algorithm missing the relevant relations between features and target outputs.
+
+**Variance:** Refers to an algorithm's sensitivity to small fluctuations in the training set.
+
+**High Variance:** A result of the algorithm fitting to random noise in the training data.
+- The model is very highly tuned to the data it has seen already but it does very poorly on examples that look nothing like what it has seen before
+
+![](model_complexity.jpg)
+
+**Model Complexity:** Across the `x` axis
+- Complex on the RIGHT
+- Simple on the LEFT
+
+**Model Error:** On the `y` axis
+
+**Teal Line:** Represents the ***Variance***
+- It consistently increases as the model gets more complex
+- More Complexity = More Variance
+
+**Red Line:** Represents the ***Bias***
+- It decreases as the model gets more complex
+- Less Complexity = High Bias
+
+**Black Line:** Represents the ***Total Error***
+- Very high for both a very simple model and a very complex model
+- It bottoms out somewhere in the middle where the vertical line indicates ***Optimum Model Complexity***
+- Total Error = (Bias + Variance) + Irreducible Error
+  - **Irreducible Error:** Some amount of error that the model will never be able to learn
+    - Such as randomness, noise, or however you want to define it
+  - The part of this equation that we control is the bias and variance and by reducing those, we can reduce the total error
+
+**Bias/Variance Tradeoff:** Finding the right model complexity that minimizes both bias and variance as much as possible.
+
+### [What is Underfitting?](https://www.linkedin.com/learning/applied-machine-learning-foundations/what-is-underfitting?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+![](model_complexity_underfitting.jpg)
+
+**Underfitting:** Low complexity model with high bias and low variance, which results in high total error
+- Occurs when an algorithm can not capture the underlying trend of the data
+
+![](underfitting_classification.jpg)
+
+### [What is Overfitting?](https://www.linkedin.com/learning/applied-machine-learning-foundations/what-is-overfitting?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+![](model_complexity_overfitting.jpg)
+
+**Overfitting:** High complexity model with low bias and high variance, which results in high total error
+- Occurs when an algorithm fits too closely to a limited set of data
+
+  ![](overfitting.jpg)
+  - This is an example of a highly complex model
+  - We can see that there is a very complex decision boundary
+  - This model has fit very closely to the training data
+  - It's very likely that this isn't the real pattern that it should be learning
+  - Instead, it's just memorizing these examples
+  - As a result, the model will have a very hard time generalizing to unseen data
+
+### [Finding Optimal Tradeoff](https://www.linkedin.com/learning/applied-machine-learning-foundations/finding-the-optimal-tradeoff?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+![](model_complexity_over-under-fitting.jpg)
+In this image we see that we have ***underfitting*** on the left and ***overfitting*** on the right. Then in the middle there is this line that says "***Optimum Model Complexity***". This is the optimal tradeoff we are trying to achieve.
+
+![](complexity.jpg)
+Here we are looking at it in a different way, on a scale of complexity.
+- On the right is our very simple model 
+  - It will underfit our data and won't learn the true pattern 
+  - It has high bias and low variance
+- On the other extreme (left side) is our overly complex model
+  - This model is overfitting
+  - It is essentially just memorizing the training set
+  - It has low bias and high variance
+- The goal is to find something in the middle
+  - This would have some kind of medium complexity
+  - It would learn the true pattern in the data with this "curved" decision boundary
+  - However, it won't memorize every example in the training data
+  - It would have low (not minimum) bias and low variance
+
+![](train_test_errors.jpg)
+The best way to diagnose overfit vs underfit:
+- Typically, you'll really only look at the test error
+- If you see a low test error, generally that means you have a good model
+- If you have high test error, you can look at the training error to really understand whether you're overfitting or you're underfitting
+- Then you can work from there to improve your model
+
+### [Hyperparameter Tuning](https://www.linkedin.com/learning/applied-machine-learning-foundations/hyperparameter-tuning?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Two Primary Ways to Tune a Model for Optimal Complexity:
+
+1. **Hyperparameter Tuning:** Choosing a set of hyperparameters for fitting an algorithm
+
+2. **Regularizarion:** Technique used to reduce overfitting by discouraging overly complex models in some way
+
+**Parameter:** A configuration variable that is internal to the model and whose value can be estimated from the data.
+
+**Hyperparameter:** A configuration that is external to the model, whose value cannot be estimated from data, and whose value guides how the algorithm learns parameter values from the data.
+
+![](param_vs_hyperparams.jpg)
+
+### [Regularization](https://www.linkedin.com/learning/applied-machine-learning-foundations/regularization?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+The ultimate goal of Regularization:
+- Allow enough flexibility for the algorithm to learn the underlying patterns in the data but provide guardrails, so it doesn't overfit
+
+**Occam's Razor:** Whenever possible, chose the simplest answer to a problem.
+- Not specific to machine learning
+- In our case, choose the simplest model to make accurate predictions
+- Don't overcomplicate things!
+
+Examples of Regularization:
+
+- **Ridge Regression and Lasso Regression:**
+  - Adding a penalty to the loss function to constrain coefficients
+  - In other words, model performance needs to improve a lot in order for the method of regularization to allow the model to become more complex
+
+- **Dropout:**
+  - Used in deep learning
+  - Some nodes are ignored during training which forces the other nodes to take on more or less responsibility for the input/output
+
+### [Chapter Quiz](https://www.linkedin.com/learning/applied-machine-learning-foundations/quiz/urn:li:learningApiAssessment:4586349?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+The goal of model optimization is to tune model complexity to minimize total error by reducing variance and bias.
+
+- [x] TRUE
+
+- [ ] FALSE
+
+Which is NOT a characteristic of underfitting?
+
+- [ ] low variance
+
+- [ ] high bias
+
+- [ ] not capturing underlying trend in data
+
+- [x] memorizing training examples
+
+Which is NOT a characteristic of overfitting?
+
+- [ ] low bias
+
+- [x] not capturing underlying trend in data
+
+- [ ] high variance
+
+- [ ] memorizing training examples
+
+If test error is high, what is the best tool to determine whether you're underfitting or overfitting?
+
+- [ ] number of features
+
+- [x] training error
+
+- [ ] time to train
+
+Which is NOT true of a hyperparameter?
+
+- [ ] It is external to a model.
+
+- [ ] It guides how the algorithm learns.
+
+- [x] It is learned from data.
+
+Which is NOT true of regularization when applied appropriately?
+
+- [ ] improves model's ability to generalize
+
+- [x] improves models performance on training data
+
+- [ ] reduces overfitting
+
+- [ ] reduces the complexity of a model
+
+## End-to-End Pipeline
+
+
+
+
+
+
 
