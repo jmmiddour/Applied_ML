@@ -684,9 +684,128 @@ Which is NOT true of regularization when applied appropriately?
 
 ## End-to-End Pipeline
 
+### [Overview of the Process](https://www.linkedin.com/learning/applied-machine-learning-foundations/overview-of-the-process?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
 
+![](step_1-3.jpg)
 
+1. Explore and clean the data
+   - Understand the type of features we have
+   - What the features look like
+   - What the feature's shape is
+   - How the features relate to one another
+   - How the features relate to the target variable
+   - Use some of those learnings to clean up our data
 
+2. Split the data into train/validation/test sets
+   
+3. Fit an initial model and evaluate
+   - Using fivefold cross-validation, fit an initial model, to see what we can expect for baseline performance
 
+![](step_4.jpg)
 
+4. Tune hyperparameters
+   - Use fivefold cross-validation to explore a number of different algorithms with different hyperparameter settings
 
+![](step_5.jpg)
+
+5. Evaluate on validation set
+   - Select the top few models and evaluate them on the validation set
+   - At this stage, we'll dive into the results a little more than we did using cross-validation to really determine which models are performing best
+
+6. Select the best model based on the validation set performance
+   - Evaluate this model on the test set
+   - This will give us an unbiased view of how we can expect this model to perform on completely unseen data
+
+### [Clean Continuous Features](https://www.linkedin.com/learning/applied-machine-learning-foundations/clean-continuous-features?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Work for this section done in the notebook in the [exercise section](foundations/05_Pipeline/05_02/Start/05_02.ipynb)
+
+### [Clean Categorical Features](https://www.linkedin.com/learning/applied-machine-learning-foundations/clean-categorical-features?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Work for this section done in the notebook in the [exercise section](foundations/05_Pipeline/05_03/Start/05_03.ipynb)
+
+### [Split Data into Train/Validation/Test Sets](https://www.linkedin.com/learning/applied-machine-learning-foundations/split-data-into-train-validation-test-set?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Work for this section done in the notebook in the [exercise section](foundations/05_Pipeline/05_04/Start/05_04.ipynb)
+
+### [Fit Basic Model using Cross-Validation](https://www.linkedin.com/learning/applied-machine-learning-foundations/fit-a-basic-model-using-cross-validation?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Work for this section done in the notebook in the [exercise section](foundations/05_Pipeline/05_05/Start/05_05.ipynb)
+
+### [Tune Hyperparameters](https://www.linkedin.com/learning/applied-machine-learning-foundations/tune-hyperparameters?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Work for this section done in the notebook in the [exercise section](foundations/05_Pipeline/05_06/Start/05_06.ipynb)
+
+### [Evaluate Results on Validation Set](https://www.linkedin.com/learning/applied-machine-learning-foundations/evaluate-results-on-validation-set?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Work for this section done in the notebook in the [exercise section](foundations/05_Pipeline/05_07/Start/05_07%20-%2005_08.ipynb)
+
+### [Final Model Selection and Evaluation](https://www.linkedin.com/learning/applied-machine-learning-foundations/final-model-selection-and-evaluation-on-test-set?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+Work for this section done in the notebook in the [exercise section](foundations/05_Pipeline/05_07/Start/05_07%20-%2005_08.ipynb)
+
+### [Chapter Quiz](https://www.linkedin.com/learning/applied-machine-learning-foundations/quiz/urn:li:learningApiAssessment:4585466?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+We fill missing values in the Age column with the average to ensure the model isn't determining whether somebody survived or not based on Age alone.
+
+- [x] TRUE
+
+- [ ] FALSE
+
+Keeping the Embarked feature in our data likely would have generated better results on unseen data.
+
+- [ ] TRUE
+
+- [x] FALSE
+
+Index=False should still be used even if you have a meaningful index column.
+
+- [ ] TRUE
+
+- [x] FALSE
+
+Which of the following is NOT a benefit of Cross-Validation?
+
+- [ ] Scikit-learn makes it very easy to use
+
+- [ ] view of performance that accounts for every point in training set
+
+- [ ] gives a range of possible outcomes
+
+- [x] faster than just fitting on the training set and evaluating on a validation set
+
+How many individual models are built using 5-fold Cross-Validation and 12 total hyperparameter combinations?
+
+- [ ] 12
+
+- [ ] 5
+
+- [ ] 1
+
+- [x] 60
+
+If the best model based on Cross-Validation does NOT perform best on the validation set, then you did something wrong.
+
+- [ ] TRUE
+
+- [x] FALSE
+
+What is the most likely reason for test set performance to deviate in a significant way from the validation set performance?
+
+- [ ] overfit to training data
+
+- [ ] faulty model
+
+- [x] limited data and/or data wasn't split randomly
+
+## Conclusion
+
+### [Next Steps](https://www.linkedin.com/learning/applied-machine-learning-foundations/next-steps?autoAdvance=true&autoSkip=true&autoplay=true&resume=false)
+
+- Other Suggested LinkedIn Learning Courses:
+  - Applied Machine Learning: Algorithms
+    - By: [Derek Jedamski](https://www.linkedin.com/learning/instructors/derek-jedamski)
+  - Machine Learning and AI Foundations: Classification Modeling
+
+- fast.ai
+  - By: Jeremy Howard, formerly the president of Kaggle
